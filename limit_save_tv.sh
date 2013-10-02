@@ -2,7 +2,7 @@
 
 interface=wlp3s0
 range=78.152.40.0-78.152.40.254
-limit=6Mbit
+limit=5Mbit
 
 sudo iptables -t mangle -L POSTROUTING | grep --quiet $range
 if [[ $? -ne 0 ]]; then
