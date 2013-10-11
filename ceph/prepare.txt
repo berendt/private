@@ -1,0 +1,9 @@
+sudo useradd -d /home/ceph -m ceph
+sudo passwd ceph
+echo "ceph ALL = (root) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/ceph
+sudo chmod 0440 /etc/sudoers.d/ceph
+sudo chsh -s /bin/bash ceph
+su - ceph
+ssh-keygen
+wget -q -O- 'https://ceph.com/git/?p=ceph.git;a=blob_plain;f=keys/release.asc' | sudo apt-key add -
+echo deb http://ceph.com/debian-dumpling/ $(lsb_release -sc) main | sudo tee /etc/apt/sources.list.d/ceph.list
