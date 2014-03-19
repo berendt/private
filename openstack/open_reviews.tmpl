@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+          "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>open reviews on review.openstack.org</title>
+  <style type="text/css">
+    td { padding: 4px; border: 1px solid black; }
+    body, table, tr, td { font-family: Verdana, sans-serif; }
+  </style>
+</head>
+<body>
+<p>
+  <table>
+    <tr style="font-weight: bold">
+      <td>Project</td>
+      <td>Owner</td>
+      <td>Subject</td>
+      <td>Review</td>
+    </tr>
+    <!--(for review in reviews)-->
+    <tr>
+      <td><a href="https://review.openstack.org/#/q/status:open+project:@!review['project']!@,n,z">@!review['project']!@</a></td>
+      <td><a href="https://review.openstack.org/#/q/owner:@!review['owner']['email']!@,n,z">@!review['owner']['name']!@</a></td>
+      <td>@!review['subject']!@</td>
+      <td><a href="@!review['url']!@">show review</a></td>
+    </tr>
+    <!--(end)-->
+  </table>
+</p>
+</body>
+</html>
