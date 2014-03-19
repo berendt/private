@@ -1,0 +1,11 @@
+---
+username: YOUR_USERNAME
+access_key: YOUR_ACCESS_KEY
+secret: YOUR_SECRET
+minimum_btc: 0.00001
+minimum_ghs: 0.00001
+buy: 0.070
+sell: 0.075
+panic: 0.0
+step_buy: 0.1
+step_sell: 0.5
