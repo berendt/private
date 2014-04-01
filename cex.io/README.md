@@ -8,5 +8,3 @@ Dependencies:
   * PyYAML (https://pypi.python.org/pypi/PyYAML/)
 
 You can create an API access key at https://www.cex.io/trade/profile.
-
-Donations are welcome: 155yPBya11iqNLvyQDN5fxbP6EsKLMAnRX (Bitcoin).
