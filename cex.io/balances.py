@@ -10,7 +10,7 @@ import time
 import yaml
 import sys
 
-logging.basicConfig(format='%(asctime)s %(message)s', level=logging.DEBUG)
+logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO)
 
 from bigfloat import *
 precision(8)
