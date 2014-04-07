@@ -50,7 +50,7 @@ class api:
         params = urllib.urlencode(param)
         req = urllib2.Request(url, params, {'User-agent': 'bot-cex.io-'+self.__username})
         page = urllib2.urlopen(req).read()
-        return page;
+        return page
  
     def api_call(self, method, param = {}, private = 0, couple = ''):
         url = 'https://cex.io/api/'+method+'/'
