@@ -14,8 +14,7 @@ import hmac
 import json
 import random
 import time
-import urllib
-import urllib2
+import urllib3
 
 class api:
     __username = None;
@@ -23,11 +22,13 @@ class api:
     __api_secret = None;
     __nonce_v = None;
     __calls = 0;
+    __http = None
 
     def __init__(self, username, api_key, api_secret):
         self.__username = username
         self.__api_key = api_key
         self.__api_secret = api_secret
+        self.__http = urllib3.PoolManager()
 
     def __nonce(self):
 
@@ -46,11 +47,9 @@ class api:
         signature = hmac.new(self.__api_secret, string, digestmod=hashlib.sha256).hexdigest().upper()
         return signature
 
-    def __post(self, url, param):
-        params = urllib.urlencode(param)
-        req = urllib2.Request(url, params, {'User-agent': 'bot-cex.io-'+self.__username})
-        page = urllib2.urlopen(req).read()
-        return page
+    def __post(self, url, params):
+        r = self.__http.request('POST', url, fields=params)
+        return r.data
  
     def api_call(self, method, param = {}, private = 0, couple = ''):
         url = 'https://cex.io/api/'+method+'/'
