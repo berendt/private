@@ -30,10 +30,14 @@ class api:
         self.__api_secret = api_secret
         self.__http = urllib3.PoolManager()
 
+    def reset_nonce(self):
+        self.__nonce_v = None
+        self.__calls = 0
+
     def __nonce(self):
 
         if self.__calls > 10:
-            self.__nonce_v = None
+            self.reset_nonce()
 
         if not self.__nonce_v:
             self.__nonce_v = int(str(time.time()).split('.')[0])
