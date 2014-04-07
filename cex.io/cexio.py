@@ -22,6 +22,7 @@ class api:
     __api_key = None;
     __api_secret = None;
     __nonce_v = None;
+    __calls = 0;
 
     def __init__(self, username, api_key, api_secret):
         self.__username = username
@@ -29,10 +30,16 @@ class api:
         self.__api_secret = api_secret
 
     def __nonce(self):
+
+        if self.__calls > 10:
+            self.__nonce_v = None
+
         if not self.__nonce_v:
             self.__nonce_v = int(str(time.time()).split('.')[0])
         else:
             self.__nonce_v += 1
+
+        self.__calls += 1
 
     def __signature(self):
         string = str(self.__nonce_v) + self.__username + self.__api_key
@@ -50,6 +57,7 @@ class api:
 
         if couple != '': 
             url = url + couple + '/'
+
         if private == 1:
             self.__nonce()
 
