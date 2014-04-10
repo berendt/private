@@ -33,8 +33,13 @@ class Pinger():
 
 # arguments: NUMBER_OF_PINGS INTERVAL_BETWEEN_PINGS ADDRESS_1 ADDRESS_2 ..
 
-# sample: python pinger.py 10 3 10.10.10.10 10.10.10.20 ..
+# sample: python pinger.py start/stop 10 3 10.10.10.10 10.10.10.20 ..
 
-pinger = Pinger(int(sys.argv[2]), int(sys.argv[3]), sys.argv[4:])
+try:
+    pinger = Pinger(int(sys.argv[2]), int(sys.argv[3]), sys.argv[4:])
+except:
+    print "usage: %s start/stop NUMBER_OF_PINGS INTERVAL_BETWEEN_PINGS ADDRESS_1 ADDRESS_2 .." % sys.argv[0]
+    sys.exit(1)
+
 daemon_runner = runner.DaemonRunner(pinger)
 daemon_runner.do_action()
